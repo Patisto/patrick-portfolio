@@ -33,23 +33,25 @@ export default function Blog() {
           <div className="blog-grid">
             {blogPosts.map((post, i) => (
               <Reveal key={post.id} as="article" className="blog-card" style={{ transitionDelay: `${i * 90}ms` }}>
-                <div className="blog-card-media">
-                  <img src={post.image} alt={post.title} loading="lazy" />
-                </div>
-                <div className="blog-card-body">
-                  <div className="blog-card-meta">
-                    <span className="blog-card-category">{post.category}</span>
-                    <span className="blog-card-date">{formatDate(post.date)}</span>
+                <Link to={`/blog/${post.id}`} className="blog-card-link">
+                  <div className="blog-card-media">
+                    <img src={post.image} alt={post.title} loading="lazy" />
                   </div>
-                  <h2 className="blog-card-title">{post.title}</h2>
-                  <p className="blog-card-excerpt">{post.excerpt}</p>
-                  <div className="project-tags">
-                    {post.tags.map((t) => <span className="skill-tag" key={t}>{t}</span>)}
+                  <div className="blog-card-body">
+                    <div className="blog-card-meta">
+                      <span className="blog-card-category">{post.category}</span>
+                      <span className="blog-card-date">{formatDate(post.date)}</span>
+                    </div>
+                    <h2 className="blog-card-title">{post.title}</h2>
+                    <p className="blog-card-excerpt">{post.excerpt}</p>
+                    <div className="project-tags">
+                      {post.tags.map((t) => <span className="skill-tag" key={t}>{t}</span>)}
+                    </div>
+                    <span className="blog-card-readmore">
+                      Read Article <i className="fa-solid fa-arrow-right"></i>
+                    </span>
                   </div>
-                  <span className="blog-card-readmore">
-                    Read Article <i className="fa-solid fa-arrow-right"></i>
-                  </span>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>

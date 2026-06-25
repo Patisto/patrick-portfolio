@@ -18,25 +18,27 @@ export default function Projects() {
         <div className="projects-grid">
           {projects.map((p, i) => (
             <Reveal key={p.id} className="project-card" style={{ transitionDelay: `${i * 80}ms` }}>
-              <div className="project-card-media">
-                <img src={p.image} alt={p.title} loading="lazy" />
-              </div>
-              <div className="project-card-body">
-                <div className="pc-top">
-                  <span className="project-num">0{i + 1}</span>
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="project-link-icon" aria-label={`Visit ${p.title}`}>
-                    <i className="fa-solid fa-arrow-up-right"></i>
-                  </a>
+              <Link to={`/projects/${p.id}`} className="project-card-link">
+                <div className="project-card-media">
+                  <img src={p.image} alt={p.title} loading="lazy" />
                 </div>
-                <div className="project-title">{p.title}</div>
-                <p className="project-desc">{p.desc}</p>
-                <ul className="project-points">
-                  {p.points.map((pt) => <li key={pt}>{pt}</li>)}
-                </ul>
-                <div className="project-tags">
-                  {p.tags.map((t) => <span className="skill-tag" key={t}>{t}</span>)}
+                <div className="project-card-body">
+                  <div className="pc-top">
+                    <span className="project-num">0{i + 1}</span>
+                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="project-link-icon" aria-label={`Visit ${p.title}`} onClick={(e) => e.stopPropagation()}>
+                      <i className="fa-solid fa-arrow-up-right"></i>
+                    </a>
+                  </div>
+                  <div className="project-title">{p.title}</div>
+                  <p className="project-desc">{p.desc}</p>
+                  <ul className="project-points">
+                    {p.points.map((pt) => <li key={pt}>{pt}</li>)}
+                  </ul>
+                  <div className="project-tags">
+                    {p.tags.map((t) => <span className="skill-tag" key={t}>{t}</span>)}
+                  </div>
                 </div>
-              </div>
+              </Link>
             </Reveal>
           ))}
         </div>
